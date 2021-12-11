@@ -67,10 +67,10 @@ def hashbrute():
             generated_string = StringGenerator(generated_string)
             formatted_string = reverseString("".join(generated_string))
             hashes = generateHashFromString(hashtype, formatted_string)
-            print(C+" "+hashes+W+" [ "+R+formatted_string+W+" ]")
+            print(C+" "+hashes+W+" [ "+R+formatted_string+W+" ]", end="\r", flush=True)
             if hashes == hashtext:
-                print("")
-                print(C+" [+]"+W+" String"+R+" : "+W+formatted_string)
+                print("\n")
+                print(C+" [+]"+W+" Result"+R+" : "+W+formatted_string)
                 break
     decrypt()
 
