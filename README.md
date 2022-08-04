@@ -16,6 +16,9 @@ python hash.py -m brute -s ae2b1fca515949e5d54fb22b8ed95575
 ```sh
 python hash.py -s ae2b1fca515949e5d54fb22b8ed95575
 ```
+```sh
+python hash.py -l list.txt -m brute
+```
 ## Dependencies
 + Python
 
