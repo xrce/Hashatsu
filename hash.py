@@ -7,11 +7,13 @@ parse = argparse.ArgumentParser()
 parse.add_argument('-m', help='crack method', dest='mode')
 parse.add_argument('-s', help='hash to crack', dest='hash')
 parse.add_argument('-l', help='hash list', dest='list')
+parse.add_argument('-c', help='character set', dest='char')
 args = parse.parse_args()
 
 mode = args.mode
 hashtext = args.hash
 hashlist = args.list
+charset = args.char
 
 B  = '\033[1;34'
 C  = '\033[1;36m'
@@ -28,8 +30,20 @@ def banner():
     print(R+"    ハ"+Y+"ッ"+G+"シ"+C+"ュ"+OG+"キ"+LG+"ラー"+W)
     print("")
 
-def hashbrute():
+if not charset:
     ascii_letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+else:
+    ascii_letters = ""
+    if 'a' in charset:
+        ascii_letters += "abcdefghijklmnopqrstuvwxyz"
+    if 'A' in charset:
+        ascii_letters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    if '0' in charset:
+        ascii_letters += "0123456789"
+    if '!' in charset:
+        ascii_letters += "!\"\$%&/()=?-.:\\*'-_:.;,"
+
+def hashbrute():
     string_list = ascii_letters
     
     def generateHashFromString(hashtype, cleartextString):
@@ -74,7 +88,7 @@ def hashbrute():
                 if hashlist:
                     print(C+"\r [+] "+W+hashtext+R+" : "+W+formatted_string)
                 else:
-                    print(C+"\n [+]"+W+" Result"+R+" : "+W+formatted_string)
+                    print(C+"\n [+] "+W+"Result"+R+" : "+W+formatted_string)
                 break
     decrypt()
 
