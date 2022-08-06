@@ -3,8 +3,16 @@ Simple hash killer with some options
 
 ## How to Use
 ```sh
-python hash.py -m <mode> -s <hash>
+python hash.py -m <mode> -s <hash> -c <charset>
 ```
+
+**Character Set :**
+| Options | Characters                 |
+| :-----: | -------------------------- |
+|  **a**  | abcdefghijklmnopqrstuvwxyz |
+|  **A**  | ABCDEFGHIJKLMNOPQRSTUVWXYZ |
+|  **0**  | 1234567890                 |
+|  **!**  | !\"\$%&/()=?-.:\\*'-_:.;,  |
 
 **Example :**
 
@@ -17,7 +25,7 @@ python hash.py -m brute -s ae2b1fca515949e5d54fb22b8ed95575
 python hash.py -s ae2b1fca515949e5d54fb22b8ed95575
 ```
 ```sh
-python hash.py -l list.txt -m brute
+python hash.py -l list.txt -m brute -c a0
 ```
 ## Dependencies
 + Python
